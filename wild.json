@@ -1,0 +1,10 @@
+// wild.js
+function handleDirtyTalk(text) {
+  const heatLevel = analyzeEroticism(text); // NLP magic
+  document.querySelectorAll('.jiggle-zone').forEach(zone => {
+    zone.style.animationDuration = `${1 - (heatLevel * 0.8)}s`; 
+  });
+  if(heatLevel > 0.7) {
+    document.body.classList.add('steam-effect'); // Foggy overlay
+  }
+}
