@@ -1,0 +1,11 @@
+// moan.js - Dynamic Audio Engine
+const moanLibrary = {
+  low: ["soft_giggle.mp3", "breathy_sigh.mp3"],
+  high: ["gasp_3.ogg", "scream_1.wav"],
+  extreme: ["orgasm_loop.aac", "bed_squeak_long.mp3"]
+};
+
+function playMoan(intensity) {
+  const clip = moanLibrary[intensity][Math.floor(Math.random() * 2)];
+  new Audio(`/sounds/${clip}`).play(); 
+}
