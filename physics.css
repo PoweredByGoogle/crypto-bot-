@@ -1,0 +1,9 @@
+/* physics.css */
+.jiggle-zone {
+  animation: bounce 0.5s infinite alternate;
+  transform-origin: 50% 30%;
+}
+@keyframes bounce {
+  from { transform: scaleY(1); }
+  to { transform: scaleY(1.2) rotate(2deg); }
+}
