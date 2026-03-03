@@ -3,89 +3,196 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your Site</title>
+  <title>Premium Access - Link Blast Pro</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #0a0a0a;
-      color: #e0e0e0;
       margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-    #paywall {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.95);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #e0e0e0;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 9999;
     }
-    #content { display: none; }
-    input, button {
-      padding: 14px;
+    .container {
+      background: rgba(20, 20, 40, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 40px 30px;
+      max-width: 480px;
+      width: 90%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      text-align: center;
+      border: 1px solid rgba(0, 255, 100, 0.15);
+    }
+    h1 {
+      color: #00ff88;
+      margin-bottom: 8px;
+      font-size: 28px;
+    }
+    p.subtitle {
+      color: #a0a0ff;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+    .price {
+      font-size: 36px;
+      font-weight: bold;
+      color: #00ff88;
+      margin: 20px 0;
+    }
+    .price small {
       font-size: 18px;
-      margin: 10px;
+      color: #aaa;
+    }
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 30px 0;
+      text-align: left;
+    }
+    .features li {
+      margin: 12px 0;
+      font-size: 15px;
+      position: relative;
+      padding-left: 30px;
+    }
+    .features li:before {
+      content: "✔";
+      color: #00ff88;
+      position: absolute;
+      left: 0;
+      font-size: 18px;
+    }
+    .input-group {
+      margin: 30px 0;
+    }
+    input[type="password"] {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border: 1px solid #444;
       border-radius: 8px;
-      border: none;
+      background: #1a1a2e;
+      color: white;
+      outline: none;
+    }
+    input[type="password"]:focus {
+      border-color: #00ff88;
+      box-shadow: 0 0 8px rgba(0,255,136,0.3);
     }
     button {
-      background: #00cc44;
-      color: white;
+      width: 100%;
+      padding: 16px;
+      font-size: 18px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #00cc66, #00ff88);
+      color: black;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
+      transition: all 0.2s;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,255,136,0.4);
+    }
+    #content {
+      display: none;
+      padding: 30px;
+      background: rgba(20,20,40,0.9);
+      border-radius: 16px;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .wallet {
+      background: #1a1a2e;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 10px;
+      word-break: break-all;
+    }
+    .back-link {
+      margin-top: 40px;
+      font-size: 15px;
+    }
+    .back-link a {
+      color: #00ff88;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
 
-<!-- This is shown to everyone until passcode is correct -->
-<div id="paywall">
-  <div>
-    <h2>Premium Access</h2>
-    <p>$9.99 / month required</p>
-    <input type="password" id="pass" placeholder="Enter passcode" autocomplete="off"/>
-    <button onclick="checkPass()">Enter</button>
-    <p style="font-size:14px; margin-top:20px; opacity:0.7;">
-      (Admin / test mode available)
-    </p>
+<div class="container" id="paywall">
+  <h1>Premium Access</h1>
+  <p class="subtitle">Unlock full features, priority blasts & exclusive tools</p>
+
+  <div class="price">
+    $9.99 <small>/ month</small>
+  </div>
+
+  <ul class="features">
+    <li>Unlimited worldwide link blasts</li>
+    <li>Priority featuring & shoutouts</li>
+    <li>Exclusive promo strategies</li>
+    <li>Early access to new tools</li>
+    <li>Direct support from creator</li>
+  </ul>
+
+  <div class="input-group">
+    <input type="password" id="passcode" placeholder="Enter access code" autocomplete="off"/>
+    <button onclick="unlock()">Unlock Access</button>
   </div>
 </div>
 
-<!-- This is the real content – hidden until passcode is correct -->
+<!-- Hidden real content -->
 <div id="content">
-  <h1>Welcome to the site!</h1>
-  <p>You are now inside. This is where your real page content goes.</p>
-  <p>Put your link blaster form, wallets, tools, or anything else here.</p>
+  <h1>Welcome, Admin</h1>
+  <p>You bypassed the paywall successfully.</p>
 
-  <!-- Example wallet display -->
-  <h2>Your Wallets</h2>
-  <p>Ethereum: <code>0x7fd0d4addbee109ef76b12adbae72ec2b56312f1</code></p>
-  <p>Bitcoin: <code>bc1qp5xzq2aa4mz3qejp42wqvaandtgc4qguppz9cj</code></p>
-  <p>Solana: <code>7S8x4rVmAuazq8iMHHwb3T1cMCv5wXnUxiRjwgyYGh5i</code></p>
-  <p>Dogecoin: <code>D8BB6wcA4pYkvCBrT5ma4tdxavsKJwxmwz</code></p>
+  <h2>Your Wallets (Robinhood Compatible)</h2>
+  <div class="wallet">
+    <strong>Ethereum:</strong><br>
+    0x7fd0d4addbee109ef76b12adbae72ec2b56312f1
+  </div>
+  <div class="wallet">
+    <strong>Bitcoin:</strong><br>
+    bc1qp5xzq2aa4mz3qejp42wqvaandtgc4qguppz9cj
+  </div>
+  <div class="wallet">
+    <strong>Solana:</strong><br>
+    7S8x4rVmAuazq8iMHHwb3T1cMCv5wXnUxiRjwgyYGh5i
+  </div>
+  <div class="wallet">
+    <strong>Dogecoin:</strong><br>
+    D8BB6wcA4pYkvCBrT5ma4tdxavsKJwxmwz
+  </div>
 
-  <!-- Add your original blast form here -->
+  <p class="back-link">
+    ← <a href="https://ygoogle.github.io">Back to Main Tool</a>
+  </p>
 </div>
 
 <script>
-  const ADMIN_CODE = "Vault*Secure_Hunter%99";
+  const SECRET_CODE = "Vault*Secure_Hunter%99";
 
-  function checkPass() {
-    const input = document.getElementById("pass").value.trim();
-    if (input === ADMIN_CODE) {
+  function unlock() {
+    const input = document.getElementById("passcode").value.trim();
+    if (input === SECRET_CODE) {
       document.getElementById("paywall").style.display = "none";
       document.getElementById("content").style.display = "block";
-      // Optional: remember for 24h so you don't have to enter every time
-      localStorage.setItem("admin_access", Date.now());
+      // Remember for 24 hours
+      localStorage.setItem("unlocked", Date.now());
     } else {
-      alert("Incorrect passcode.");
+      alert("Incorrect code. Try again.");
     }
   }
 
-  // Auto-login if already entered in last 24 hours
-  const lastAccess = localStorage.getItem("admin_access");
-  if (lastAccess && Date.now() - Number(lastAccess) < 24 * 60 * 60 * 1000) {
+  // Auto-unlock if already entered recently
+  const lastUnlock = localStorage.getItem("unlocked");
+  if (lastUnlock && Date.now() - Number(lastUnlock) < 24 * 60 * 60 * 1000) {
     document.getElementById("paywall").style.display = "none";
     document.getElementById("content").style.display = "block";
   }
