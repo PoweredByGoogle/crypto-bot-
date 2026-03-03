@@ -1,200 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Premium Access - Link Blast Pro</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Access - Powered by Kartik</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: #e0e0e0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #0f001a, #1a0033);
+      color: #f0f0ff;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
     }
-    .container {
-      background: rgba(20, 20, 40, 0.85);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
+    .card {
+      background: rgba(30, 20, 60, 0.92);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
       padding: 40px 30px;
-      max-width: 480px;
-      width: 90%;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      border: 1px solid rgba(120, 80, 255, 0.25);
       text-align: center;
-      border: 1px solid rgba(0, 255, 100, 0.15);
     }
     h1 {
-      color: #00ff88;
-      margin-bottom: 8px;
+      color: #a78bfa;
+      margin: 0 0 12px;
       font-size: 28px;
-    }
-    p.subtitle {
-      color: #a0a0ff;
-      margin-bottom: 30px;
-      font-size: 16px;
+      font-weight: 600;
     }
     .price {
-      font-size: 36px;
-      font-weight: bold;
-      color: #00ff88;
+      font-size: 42px;
+      font-weight: 700;
+      color: #c4b5fd;
       margin: 20px 0;
     }
     .price small {
       font-size: 18px;
-      color: #aaa;
+      opacity: 0.8;
     }
     .features {
       list-style: none;
       padding: 0;
-      margin: 30px 0;
+      margin: 30px 0 40px;
       text-align: left;
     }
     .features li {
-      margin: 12px 0;
-      font-size: 15px;
+      margin: 14px 0;
+      font-size: 16px;
       position: relative;
-      padding-left: 30px;
+      padding-left: 32px;
     }
     .features li:before {
-      content: "✔";
-      color: #00ff88;
+      content: "✓";
+      color: #a78bfa;
       position: absolute;
       left: 0;
-      font-size: 18px;
+      font-weight: bold;
     }
-    .input-group {
-      margin: 30px 0;
-    }
-    input[type="password"] {
+    input {
       width: 100%;
-      padding: 14px;
-      font-size: 16px;
-      border: 1px solid #444;
-      border-radius: 8px;
-      background: #1a1a2e;
+      padding: 16px;
+      font-size: 17px;
+      border: 1px solid #4b3f72;
+      border-radius: 10px;
+      background: #1e1438;
       color: white;
+      margin-bottom: 16px;
       outline: none;
     }
-    input[type="password"]:focus {
-      border-color: #00ff88;
-      box-shadow: 0 0 8px rgba(0,255,136,0.3);
+    input:focus {
+      border-color: #a78bfa;
+      box-shadow: 0 0 0 3px rgba(167,139,250,0.2);
     }
     button {
       width: 100%;
       padding: 16px;
       font-size: 18px;
-      font-weight: bold;
-      background: linear-gradient(90deg, #00cc66, #00ff88);
-      color: black;
+      font-weight: 600;
+      background: linear-gradient(90deg, #7c3aed, #a78bfa);
+      color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       transition: all 0.2s;
     }
     button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,255,136,0.4);
+      box-shadow: 0 10px 30px rgba(167,139,250,0.4);
     }
     #content {
       display: none;
-      padding: 30px;
-      background: rgba(20,20,40,0.9);
-      border-radius: 16px;
+      background: rgba(20, 15, 50, 0.9);
+      border-radius: 20px;
+      padding: 40px 30px;
       max-width: 600px;
       margin: 20px auto;
+      border: 1px solid rgba(120,80,255,0.2);
     }
-    .wallet {
-      background: #1a1a2e;
-      padding: 15px;
-      margin: 15px 0;
-      border-radius: 10px;
+    .wallet-box {
+      background: #1e1438;
+      padding: 16px;
+      margin: 16px 0;
+      border-radius: 12px;
+      font-family: monospace;
       word-break: break-all;
+      font-size: 15px;
+      border-left: 4px solid #a78bfa;
     }
-    .back-link {
+    .back {
       margin-top: 40px;
       font-size: 15px;
     }
-    .back-link a {
-      color: #00ff88;
+    .back a {
+      color: #c4b5fd;
       text-decoration: none;
     }
   </style>
 </head>
 <body>
 
-<div class="container" id="paywall">
-  <h1>Premium Access</h1>
-  <p class="subtitle">Unlock full features, priority blasts & exclusive tools</p>
-
-  <div class="price">
-    $9.99 <small>/ month</small>
-  </div>
+<div class="card" id="paywall">
+  <h1>Premium Membership</h1>
+  <div class="price">$9.99<small>/month</small></div>
 
   <ul class="features">
-    <li>Unlimited worldwide link blasts</li>
-    <li>Priority featuring & shoutouts</li>
-    <li>Exclusive promo strategies</li>
-    <li>Early access to new tools</li>
-    <li>Direct support from creator</li>
+    <li>Unlimited worldwide blasts</li>
+    <li>Priority link featuring</li>
+    <li>Exclusive growth strategies</li>
+    <li>Direct creator support</li>
+    <li>Early access to updates</li>
   </ul>
 
-  <div class="input-group">
-    <input type="password" id="passcode" placeholder="Enter access code" autocomplete="off"/>
-    <button onclick="unlock()">Unlock Access</button>
-  </div>
+  <input type="password" id="code" placeholder="Enter access code" autocomplete="off">
+  <button onclick="unlock()">Unlock Access</button>
 </div>
 
-<!-- Hidden real content -->
 <div id="content">
-  <h1>Welcome, Admin</h1>
-  <p>You bypassed the paywall successfully.</p>
+  <h1>Admin / Premium Area</h1>
+  <p>You have full access now.</p>
 
-  <h2>Your Wallets (Robinhood Compatible)</h2>
-  <div class="wallet">
-    <strong>Ethereum:</strong><br>
-    0x7fd0d4addbee109ef76b12adbae72ec2b56312f1
-  </div>
-  <div class="wallet">
-    <strong>Bitcoin:</strong><br>
-    bc1qp5xzq2aa4mz3qejp42wqvaandtgc4qguppz9cj
-  </div>
-  <div class="wallet">
-    <strong>Solana:</strong><br>
-    7S8x4rVmAuazq8iMHHwb3T1cMCv5wXnUxiRjwgyYGh5i
-  </div>
-  <div class="wallet">
-    <strong>Dogecoin:</strong><br>
-    D8BB6wcA4pYkvCBrT5ma4tdxavsKJwxmwz
-  </div>
+  <h2>Your Crypto Wallets (Robinhood Compatible)</h2>
+  <div class="wallet-box"><strong>Ethereum:</strong> 0x7fd0d4addbee109ef76b12adbae72ec2b56312f1</div>
+  <div class="wallet-box"><strong>Bitcoin:</strong> bc1qp5xzq2aa4mz3qejp42wqvaandtgc4qguppz9cj</div>
+  <div class="wallet-box"><strong>Solana:</strong> 7S8x4rVmAuazq8iMHHwb3T1cMCv5wXnUxiRjwgyYGh5i</div>
+  <div class="wallet-box"><strong>Dogecoin:</strong> D8BB6wcA4pYkvCBrT5ma4tdxavsKJwxmwz</div>
 
-  <p class="back-link">
-    ← <a href="https://ygoogle.github.io">Back to Main Tool</a>
-  </p>
+  <div class="back">
+    ← <a href="https://ygoogle.github.io">Return to Main Tool</a>
+  </div>
 </div>
 
 <script>
-  const SECRET_CODE = "Vault*Secure_Hunter%99";
+  const SECRET = "Vault*Secure_Hunter%99";
 
   function unlock() {
-    const input = document.getElementById("passcode").value.trim();
-    if (input === SECRET_CODE) {
+    if (document.getElementById("code").value.trim() === SECRET) {
       document.getElementById("paywall").style.display = "none";
       document.getElementById("content").style.display = "block";
-      // Remember for 24 hours
-      localStorage.setItem("unlocked", Date.now());
+      localStorage.setItem("premium_access", Date.now());
     } else {
-      alert("Incorrect code. Try again.");
+      alert("Incorrect access code.");
     }
   }
 
-  // Auto-unlock if already entered recently
-  const lastUnlock = localStorage.getItem("unlocked");
-  if (lastUnlock && Date.now() - Number(lastUnlock) < 24 * 60 * 60 * 1000) {
-    document.getElementById("paywall").style.display = "none";
-    document.getElementById("content").style.display = "block";
+  // Auto-unlock for 24 hours
+  if (localStorage.getItem("premium_access")) {
+    const time = Number(localStorage.getItem("premium_access"));
+    if (Date.now() - time < 86400000) { // 24 hours in ms
+      document.getElementById("paywall").style.display = "none";
+      document.getElementById("content").style.display = "block";
+    }
   }
 </script>
 
