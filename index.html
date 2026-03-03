@@ -1,14 +1,95 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <title>AI Lover™</title>  
-    <script src="nsfw-engine.js"></script>  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  
-</head>  
-<body>  
-    <!-- VIP Upsell Modal -->  
-    <div id="vip-gate" style="background:url('gold-chain-texture.jpg')">  
-        <button onclick="payWithCrypto(290)">UNLOCK 18+ MODE</button>  
-    </div>  
-</body>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Site</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    #paywall {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    #content { display: none; }
+    input, button {
+      padding: 14px;
+      font-size: 18px;
+      margin: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      background: #00cc44;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- This is shown to everyone until passcode is correct -->
+<div id="paywall">
+  <div>
+    <h2>Premium Access</h2>
+    <p>$9.99 / month required</p>
+    <input type="password" id="pass" placeholder="Enter passcode" autocomplete="off"/>
+    <button onclick="checkPass()">Enter</button>
+    <p style="font-size:14px; margin-top:20px; opacity:0.7;">
+      (Admin / test mode available)
+    </p>
+  </div>
+</div>
+
+<!-- This is the real content – hidden until passcode is correct -->
+<div id="content">
+  <h1>Welcome to the site!</h1>
+  <p>You are now inside. This is where your real page content goes.</p>
+  <p>Put your link blaster form, wallets, tools, or anything else here.</p>
+
+  <!-- Example wallet display -->
+  <h2>Your Wallets</h2>
+  <p>Ethereum: <code>0x7fd0d4addbee109ef76b12adbae72ec2b56312f1</code></p>
+  <p>Bitcoin: <code>bc1qp5xzq2aa4mz3qejp42wqvaandtgc4qguppz9cj</code></p>
+  <p>Solana: <code>7S8x4rVmAuazq8iMHHwb3T1cMCv5wXnUxiRjwgyYGh5i</code></p>
+  <p>Dogecoin: <code>D8BB6wcA4pYkvCBrT5ma4tdxavsKJwxmwz</code></p>
+
+  <!-- Add your original blast form here -->
+</div>
+
+<script>
+  const ADMIN_CODE = "Vault*Secure_Hunter%99";
+
+  function checkPass() {
+    const input = document.getElementById("pass").value.trim();
+    if (input === ADMIN_CODE) {
+      document.getElementById("paywall").style.display = "none";
+      document.getElementById("content").style.display = "block";
+      // Optional: remember for 24h so you don't have to enter every time
+      localStorage.setItem("admin_access", Date.now());
+    } else {
+      alert("Incorrect passcode.");
+    }
+  }
+
+  // Auto-login if already entered in last 24 hours
+  const lastAccess = localStorage.getItem("admin_access");
+  if (lastAccess && Date.now() - Number(lastAccess) < 24 * 60 * 60 * 1000) {
+    document.getElementById("paywall").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  }
+</script>
+
+</body>
 </html>
